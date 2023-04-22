@@ -11,7 +11,7 @@ final class MenuTableView: UITableView {
     private var menuProducts: [ProductModel] = []
     private var categories: [Category] = []
     
-    var onProductCellSelected: ((ProductModel)->())? //Объявили
+    var onProductCellSelected: ((ProductModel)->())?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: style)
@@ -83,7 +83,7 @@ extension MenuTableView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = menuProducts[indexPath.row]
-        onProductCellSelected?(product) //Вызвали
+        onProductCellSelected?(product)
     }
 }
 
