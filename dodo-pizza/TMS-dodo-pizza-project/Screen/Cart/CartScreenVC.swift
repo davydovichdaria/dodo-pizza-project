@@ -40,7 +40,19 @@ final class CartScreenVC: UIViewController {
         cartView.emptyView.onPriceButtonAction = {
             self.tabBarController?.selectedIndex = 0
         }
+
+        cartView.onPromocodeTapped = {
+            let controller = CustomModalVC()
+            controller.modalPresentationStyle = .overFullScreen
+            
+            self.present(controller, animated: false, completion: nil)
+//            self.showPromoModal()
+        }
     }
+//
+//    private func showPromoModal() {
+//
+//    }
     
     func update() {
         cartView.update(order)

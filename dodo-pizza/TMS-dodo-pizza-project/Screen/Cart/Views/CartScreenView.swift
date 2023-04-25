@@ -4,8 +4,10 @@ class CartScreenView: UIView {
     private var products: [ProductModel] = []
     private var order: Order = Order(products: [])
     
-    private var cartTableView = CartTableView.init()
+    var cartTableView = CartTableView.init()
     var emptyView = EmptyScreenView.init()
+    
+    var onPromocodeTapped: (()->())?
     
     private lazy var orderHeaderLabel = OrderHeaderLabel.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: 50))
     private var orderButtonView = OrderButtonView()
@@ -38,6 +40,12 @@ class CartScreenView: UIView {
         cartTableView.onProductsIsEmpty = {
             self.hiddenViews()
         }
+        
+        cartTableView.onPromocodeTapped = {
+            self.onPromocodeTapped?()
+        }
+        
+        
     }
     
     required init?(coder: NSCoder) {

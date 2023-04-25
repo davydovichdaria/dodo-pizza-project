@@ -3,11 +3,11 @@ import UIKit
 class CartTableView: UITableView {
     
     private var products: [ProductModel] = []
-//     var orderService = OrderSevice()
     
     var order: Order = Order(products: [])
     
     var onProductsIsEmpty: (()->())?
+    var onPromocodeTapped: (()->())?
     
     var productsArchiver = ProductsArchiver()
 
@@ -43,9 +43,6 @@ class CartTableView: UITableView {
         orderHeaderLabel.updateHeaderLabel(order.count, order.totalPrice)
         self.reloadData()
     }
-    
-
-
 }
 
 extension CartTableView: UITableViewDelegate, UITableViewDataSource {
@@ -78,7 +75,14 @@ extension CartTableView: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .order:
             let cell = tableView.dequeueReusableCell(withIdentifier: OrderInfoCell.reuseId, for: indexPath) as! OrderInfoCell
+            
+            cell.onPromocodeTapped = {
+                self.onPromocodeTapped?()
+            }
+            
             cell.update(order.count, order.totalPrice)
+            
+            
             return cell
         default:
             return UITableViewCell()

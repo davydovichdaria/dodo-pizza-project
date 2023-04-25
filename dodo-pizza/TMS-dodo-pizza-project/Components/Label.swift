@@ -41,6 +41,7 @@ class Label: UILabel {
     
     func createTitleLabel(text: String) {
         self.text = text
+        self.textColor = .black
         self.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
     
