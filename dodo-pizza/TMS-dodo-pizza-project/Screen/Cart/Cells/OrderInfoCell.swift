@@ -8,6 +8,8 @@ class OrderInfoCell: UITableViewCell {
     lazy var countProductsLabel = createTextLabel("\(productsCount) товаров")
     lazy var totalPriceLabel = createPriceLabel("\(orderPrice) руб")
     
+    var onPromocodeTapped: (()->())?
+    
     private var verticalStackView: UIStackView = {
         var tableView = UIStackView()
         tableView.axis = .vertical
@@ -56,17 +58,10 @@ class OrderInfoCell: UITableViewCell {
     private var shippingLabel = Label(style: .title, text: "Доставка")
     private var shippingResultLabel = Label(style: .title, text: "Бесплатно")
     
-    private var promocodeTextField: UITextField = {
-        var textField = UITextField()
-        textField.text = "Ввести промокод"
-        textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        textField.textAlignment = .center
-        textField.textColor = .white
-        textField.backgroundColor = .orange
-        textField.layer.cornerRadius = 17
-        textField.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
+    private var promocodeButton: UIButton = {
+        var button = Button(style: .promocode, text: "Ввести промокод")
+        button.addTarget(self, action: #selector(showPromocodeModal), for: .touchUpInside)
+        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,6 +83,12 @@ class OrderInfoCell: UITableViewCell {
         default: countProductsLabel.text = "\(count) товаров"
         }
     }
+
+    @objc private func showPromocodeModal() {
+            self.onPromocodeTapped?()
+    }
+    
+
 }
 
 //MARK: - Constraints
@@ -95,7 +96,7 @@ extension OrderInfoCell {
     private func setupViews() {
         contentView.addSubview(verticalStackView)
         
-        verticalStackView.addArrangedSubview(promocodeTextField)
+        verticalStackView.addArrangedSubview(promocodeButton)
         verticalStackView.addArrangedSubview(horizontalStackView)
         
         horizontalStackView.addArrangedSubview(descriptionTitlesStackView)
@@ -115,7 +116,7 @@ extension OrderInfoCell {
             make.edges.equalTo(contentView)
         }
         
-        promocodeTextField.snp.makeConstraints { make in
+        promocodeButton.snp.makeConstraints { make in
             make.height.equalTo(35)
         }
     }

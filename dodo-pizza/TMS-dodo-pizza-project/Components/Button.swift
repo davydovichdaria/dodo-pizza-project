@@ -11,6 +11,8 @@ enum ButtonStyle: Int {
     case category
     case price
     case addToCart
+    case promocode
+    case promocodeWithoutBackground
 }
 
 class Button: UIButton {
@@ -27,6 +29,8 @@ class Button: UIButton {
         case .category: createCategoryButton(text: text)
         case .price: createPriceButton(text: text)
         case .addToCart: createAddToCartButton(text: text)
+        case .promocode: createPromocodeButton(text: text)
+        case .promocodeWithoutBackground: createPromocodeWithoutBackgroundButton(text: text)
         }
     }
     
@@ -123,5 +127,22 @@ class Button: UIButton {
         self.heightAnchor.constraint(equalToConstant: 45).isActive = true
         self.backgroundColor = .orange
         self.setTitle(text, for: .normal)
+    }
+    
+    func createPromocodeButton(text: String) {
+        self.setTitle(text, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        self.setTitleColor(.white, for: .normal)
+        self.backgroundColor = .orange
+        self.layer.cornerRadius = 17
+        self.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func createPromocodeWithoutBackgroundButton(text: String) {
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(UIColor(red: 237/255, green: 115/255, blue: 46/255, alpha: 1), for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
