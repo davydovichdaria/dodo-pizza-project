@@ -1,6 +1,6 @@
 import Foundation
 
-struct MenuModel: Codable {
+struct ProductResponse: Codable {
     
     let products: [ProductModel]
 }

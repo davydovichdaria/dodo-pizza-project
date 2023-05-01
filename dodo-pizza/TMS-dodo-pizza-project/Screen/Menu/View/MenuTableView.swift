@@ -8,7 +8,7 @@ enum MenuSection: Int, CaseIterable {
 
 final class MenuTableView: UITableView {
     private var banners: [Banners] = []
-    private var menuProducts: [ProductModel] = []
+    private var products: [ProductModel] = []
     private var categories: [Category] = []
     
     var onProductCellSelected: ((ProductModel)->())?
@@ -37,8 +37,8 @@ final class MenuTableView: UITableView {
         self.categories = categories
     }
     
-    func updateProducts(menuProducts: [ProductModel]) {
-        self.menuProducts = menuProducts
+    func updateProducts(_ products: [ProductModel]) {
+        self.products = products
     }
 }
 
@@ -53,7 +53,7 @@ extension MenuTableView: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .banners: return 1
         case .categories: return 1
-        case .products: return menuProducts.count
+        case .products: return products.count
         default: return 0
         }
     }
@@ -74,7 +74,7 @@ extension MenuTableView: UITableViewDataSource, UITableViewDelegate {
         case .products:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.reuseId, for: indexPath) as! ProductsTableViewCell
             
-            let product = menuProducts[indexPath.row]
+            let product = products[indexPath.row]
             cell.update(product)
             return cell
         default: return UITableViewCell()
@@ -82,7 +82,7 @@ extension MenuTableView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = menuProducts[indexPath.row]
+        let product = products[indexPath.row]
         onProductCellSelected?(product)
     }
 }

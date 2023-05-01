@@ -40,6 +40,7 @@
 		623A3E2D29EAADCF00EB3599 /* CollectionViewCellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A3E2C29EAADCF00EB3599 /* CollectionViewCellSize.swift */; };
 		623A3E2F29EAC10800EB3599 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 623A3E2E29EAC10700EB3599 /* menu.json */; };
 		625C10FB29F6B048004E7F05 /* CustomModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C10FA29F6B048004E7F05 /* CustomModalVC.swift */; };
+		625C110029F9AA35004E7F05 /* MenuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C10FF29F9AA35004E7F05 /* MenuAPI.swift */; };
 		6268905229BDD04000DC5167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6268905129BDD04000DC5167 /* AppDelegate.swift */; };
 		6268905429BDD04000DC5167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6268905329BDD04000DC5167 /* SceneDelegate.swift */; };
 		6268905929BDD04000DC5167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6268905729BDD04000DC5167 /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		623A3E2C29EAADCF00EB3599 /* CollectionViewCellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellSize.swift; sourceTree = "<group>"; };
 		623A3E2E29EAC10700EB3599 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		625C10FA29F6B048004E7F05 /* CustomModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVC.swift; sourceTree = "<group>"; };
+		625C10FF29F9AA35004E7F05 /* MenuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAPI.swift; sourceTree = "<group>"; };
 		6268904E29BDD04000DC5167 /* TMS-dodo-pizza-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TMS-dodo-pizza-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6268905129BDD04000DC5167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6268905329BDD04000DC5167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				623A3E1A29E95BBD00EB3599 /* JsonLoader.swift */,
+				625C10FF29F9AA35004E7F05 /* MenuAPI.swift */,
 				623A3E1C29E964A700EB3599 /* ProductsArchiver.swift */,
 				6230843329E4895B003CD4CB /* BannersService.swift */,
 				6230846829E567C5003CD4CB /* CategoryService.swift */,
@@ -475,6 +478,7 @@
 				6268905229BDD04000DC5167 /* AppDelegate.swift in Sources */,
 				6230846E29E5A5DB003CD4CB /* BannersTableViewCell.swift in Sources */,
 				6230843A29E54D18003CD4CB /* MenuScreenView.swift in Sources */,
+				625C110029F9AA35004E7F05 /* MenuAPI.swift in Sources */,
 				623A3E2D29EAADCF00EB3599 /* CollectionViewCellSize.swift in Sources */,
 				623A3E1029E89D0B00EB3599 /* CartTableView.swift in Sources */,
 				6230847429E7FD94003CD4CB /* IngredientsCell.swift in Sources */,
