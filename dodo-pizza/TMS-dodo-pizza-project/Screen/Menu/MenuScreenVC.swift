@@ -2,10 +2,10 @@ import UIKit
 
 final class MenuScreenVC: UIViewController {
     
-    lazy var menuProducts: [ProductModel] = []  //Массив продуктов
+    let menuAPI = MenuAPI()
     
     private var bannersService = BannersService() //Массив баннеров
-    lazy var banners: [Banners] = []
+//    lazy var banners: [Banners] = []
     
     private var categoryService = CategoryService()
     lazy var categories: [Category] = [] // Массив категорий
@@ -23,21 +23,35 @@ final class MenuScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuProducts = fetchProducts()
-        banners = bannersService.fetchBanners()
-        categories = categoryService.fetchCategories()
-        
-        menuView.updateBanners(banners)
-        menuView.updateCategories(categories)
-        menuView.updateProducts(menuProducts)
-        
+        fetchProducts()
+        fetchBanners()
+        fetchCategories()
+
         menuView.menuTableView.onProductCellSelected = { product in //Приняли
             self.showDetailProduct(product) //показываем выбранный
         }
     }
     
-    func fetchProducts() -> [ProductModel] {
-        jsonLoader.loadProducts(filename: "menu") ?? []
+    func fetchProducts() {
+        Task {
+            do {
+                let products = try await menuAPI.fetchMenu()
+                menuView.updateProducts(products)
+                menuView.menuTableView.reloadData()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func fetchBanners() {
+        let banners = bannersService.fetchBanners()
+        menuView.updateBanners(banners)
+    }
+    
+    func fetchCategories() {
+        let categories = categoryService.fetchCategories()
+        menuView.updateCategories(categories)
     }
     
     func showDetailProduct(_ product: ProductModel) {

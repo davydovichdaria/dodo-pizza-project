@@ -3,7 +3,6 @@ import UIKit
 final class ProductsTableViewCell: UITableViewCell {
     
     static var reuseId = "ProductsTableViewCell"
-    private var menuTableView = MenuTableView()
     
     private var containerStackView: UIStackView = {
         var stackView = UIStackView()

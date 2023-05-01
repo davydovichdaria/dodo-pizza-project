@@ -4,7 +4,6 @@ final class MenuScreenView: UIView {
     
     private var banners: [Banners] = []
     private var categories: [Category] = []
-    private var menuProducts: [ProductModel] = []
     
     var menuTableView = MenuTableView()
     
@@ -31,8 +30,7 @@ final class MenuScreenView: UIView {
     }
     
     func updateProducts(_ products: [ProductModel]) {
-        self.menuProducts = products
-        menuTableView.updateProducts(menuProducts: menuProducts)
+        menuTableView.updateProducts(products)
     }
 }
 

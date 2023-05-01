@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 final class JsonLoader {
     
@@ -10,7 +10,7 @@ final class JsonLoader {
             do {
                 let data = try Data(contentsOf: url) //В бинарник
                 
-                let jsonData = try JSONDecoder().decode(MenuModel.self, from: data) //Декодируем в модель
+                let jsonData = try JSONDecoder().decode(ProductResponse.self, from: data) //Декодируем в модель
                 
                 return jsonData.products //Получаем продукты
             } catch {
