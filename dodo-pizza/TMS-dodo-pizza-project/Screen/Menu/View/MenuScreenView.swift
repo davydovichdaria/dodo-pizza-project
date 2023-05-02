@@ -3,7 +3,7 @@ import UIKit
 final class MenuScreenView: UIView {
     
     private var banners: [Banners] = []
-    private var categories: [Category] = []
+    private var categories: [Categories] = []
     
     var menuTableView = MenuTableView()
     
@@ -24,7 +24,7 @@ final class MenuScreenView: UIView {
         menuTableView.updateBanner(banners: banners)
     }
     
-    func updateCategories(_ categories: [Category]) {
+    func updateCategories(_ categories: [Categories]) {
         self.categories = categories
         menuTableView.updateCategory(categories: categories)
     }

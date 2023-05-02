@@ -2,15 +2,11 @@ import UIKit
 
 final class MenuScreenVC: UIViewController {
     
-    let menuAPI = MenuAPI()
+    var productsAPI = ProductAPIImpl.init()
+    var products: [ProductModel] = []
     
+    private var categoriesService = CategoryService()
     private var bannersService = BannersService() //Массив баннеров
-//    lazy var banners: [Banners] = []
-    
-    private var categoryService = CategoryService()
-    lazy var categories: [Category] = [] // Массив категорий
-    
-    var jsonLoader = JsonLoader()
     
     private var menuView: MenuScreenView { //Переменная с сылкой на кастомную вью
         return self.view as! MenuScreenView
@@ -35,7 +31,8 @@ final class MenuScreenVC: UIViewController {
     func fetchProducts() {
         Task {
             do {
-                let products = try await menuAPI.fetchMenu()
+                let productsResponse = try await productsAPI.fetchMenu()
+                products = productsResponse.products
                 menuView.updateProducts(products)
                 menuView.menuTableView.reloadData()
             } catch {
@@ -50,7 +47,7 @@ final class MenuScreenVC: UIViewController {
     }
     
     func fetchCategories() {
-        let categories = categoryService.fetchCategories()
+        let categories = categoriesService.fetchCategories()
         menuView.updateCategories(categories)
     }
     

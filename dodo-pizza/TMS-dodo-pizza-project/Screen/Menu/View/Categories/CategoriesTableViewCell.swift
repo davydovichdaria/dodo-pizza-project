@@ -1,10 +1,10 @@
 import UIKit
 
 #warning("change to header section")
-final class CategoryTableViewCell: UITableViewCell{
+final class CategoriesTableViewCell: UITableViewCell{
     
-    static let reuseId = "CategoryTableViewCell"
-    private var categories: [Category] = []
+    static let reuseId = "CategoriesTableViewCell"
+    private var categories: [Categories] = []
     
     var containerView: UIView = {
         var view = UIView()
@@ -34,7 +34,7 @@ final class CategoryTableViewCell: UITableViewCell{
         var collection = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         collection.delegate = self
         collection.dataSource = self
-        collection.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseId)
+        collection.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseId)
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
@@ -55,18 +55,18 @@ final class CategoryTableViewCell: UITableViewCell{
     }
     
     //MARK: Public update
-    func update(_ categories: [Category]) {
+    func update(_ categories: [Categories]) {
         self.categories = categories
     }
 }
 
-extension CategoryTableViewCell:   UICollectionViewDelegate, UICollectionViewDataSource {
+extension CategoriesTableViewCell:   UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.reuseId, for: indexPath) as! CategoryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseId, for: indexPath) as! CategoriesCollectionViewCell
         let category = categories[indexPath.row]
         cell.update(category)
         return cell

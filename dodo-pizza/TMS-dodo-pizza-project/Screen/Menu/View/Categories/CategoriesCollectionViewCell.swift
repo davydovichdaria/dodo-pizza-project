@@ -1,7 +1,7 @@
 import UIKit
 
-final class CategoryCollectionViewCell: UICollectionViewCell {
-    static let reuseId = "CategoryCell"
+final class CategoriesCollectionViewCell: UICollectionViewCell {
+    static let reuseId = "CategoriesCollectionViewCell"
     
     private var containerView: UIView = {
         var view = UIView()
@@ -24,12 +24,12 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Public update
-    func update(_ category: Category) {
+    func update(_ category: Categories) {
         categoryButton.setTitle("\(category.name)", for: .normal)
     }
 }
 
-extension CategoryCollectionViewCell {
+extension CategoriesCollectionViewCell {
     private func setupViews() {
         contentView.addSubview(containerView)
         containerView.addSubview(categoryButton)
