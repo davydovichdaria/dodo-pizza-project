@@ -1,7 +1,6 @@
 import Foundation
 
 struct ProductResponse: Codable {
-    
     let products: [ProductModel]
 }
 
@@ -13,7 +12,6 @@ class ProductModel: Codable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
     
     var id: Int?
     var name: String

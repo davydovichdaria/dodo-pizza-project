@@ -9,7 +9,7 @@ enum MenuSection: Int, CaseIterable {
 final class MenuTableView: UITableView {
     private var banners: [Banners] = []
     private var products: [ProductModel] = []
-    private var categories: [Category] = []
+    private var categories: [Categories] = []
     
     var onProductCellSelected: ((ProductModel)->())?
     
@@ -21,7 +21,7 @@ final class MenuTableView: UITableView {
         
         self.separatorStyle = .none
         self.register(BannersTableViewCell.self, forCellReuseIdentifier: BannersTableViewCell.reuseId)
-        self.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseId)
+        self.register(CategoriesTableViewCell.self, forCellReuseIdentifier: CategoriesTableViewCell.reuseId)
         self.register(ProductsTableViewCell.self, forCellReuseIdentifier: ProductsTableViewCell.reuseId)
     }
     
@@ -33,7 +33,7 @@ final class MenuTableView: UITableView {
         self.banners = banners
     }
     
-    func updateCategory(categories: [Category]) {
+    func updateCategory(categories: [Categories]) {
         self.categories = categories
     }
     
@@ -68,7 +68,7 @@ extension MenuTableView: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case .categories:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.reuseId, for: indexPath) as! CategoryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesTableViewCell.reuseId, for: indexPath) as! CategoriesTableViewCell
             cell.update(categories)
             return cell
         case .products:

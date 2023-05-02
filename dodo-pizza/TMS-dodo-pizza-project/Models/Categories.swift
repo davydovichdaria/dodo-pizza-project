@@ -1,6 +1,6 @@
 import Foundation
 
-struct Category {
+struct Categories: Codable {
     var name: String
 }
 
